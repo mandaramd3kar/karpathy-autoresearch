@@ -1,0 +1,8 @@
+
+For smaller networks, (Adriana Vlad et al., 2025) achieved optimal solutions for up to 8 inputs using reinforcement learning with a forward check strategy, producing near-optimal solutions for 9-10 inputs. For slightly larger networks,  determined optimal depth sorting networks for all n ≤ 12 using output set representation pruning.
+
+For medium-sized networks, (Cristian Frasinaru et al., 2019) demonstrated a greedy best-first search approach that reduced runtime by 90× for 16 wires compared to prior methods. For larger networks (17-20 inputs), (Thorsten Ehlers et al., 2015) established new upper bounds and proved optimality for 17 inputs.
+
+The evidence shows no single universal solution; rather, different techniques excel at different input sizes, with recent machine learning approaches (2024-2025) showing promise for improving efficiency.
+
+A graph-based Lamarckian-Baldwinian hybrid for the sorting network problem for single CPU

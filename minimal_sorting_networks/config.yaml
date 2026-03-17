@@ -1,0 +1,58 @@
+max_iterations: 150
+checkpoint_interval: 10
+log_level: "INFO"
+random_seed: 42
+
+diff_based_evolution: true
+max_code_length: 25000
+
+llm:
+  api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  models:
+    - name: "gemini-2.5-flash-lite"
+      weight: 0.8
+    - name: "gemini-2.5-flash"
+      weight: 0.2
+  temperature: 0.7
+  max_tokens: 12000
+  timeout: 120
+
+prompt:
+  system_message: |
+    You are optimizing a Python program that searches for minimal sorting
+    networks on 16 wires.
+
+    Task objective (strict priority order):
+    1) Correctness first: the returned network must sort ALL 2^16 binary inputs.
+    2) Minimize comparator count (target optimal is 60 comparators for 16 wires).
+    3) Minimize depth as a tie-breaker.
+
+    The evolved code must keep returning a list of comparator pairs (i, j) with
+    0 <= i < j < num_wires. Focus on search strategy and representation quality.
+    Prefer robust mutations and greedy or stochastic improvement loops.
+  num_top_programs: 5
+  num_diverse_programs: 3
+  include_artifacts: true
+  max_artifact_bytes: 10240
+
+database:
+  population_size: 80
+  archive_size: 30
+  num_islands: 4
+  elite_selection_ratio: 0.2
+  exploration_ratio: 0.25
+  exploitation_ratio: 0.55
+  migration_interval: 10
+  migration_rate: 0.2
+  feature_dimensions: ["comparator_count", "depth"]
+  feature_bins: 12
+
+evaluator:
+  timeout: 60
+  max_retries: 2
+  cascade_evaluation: false
+  parallel_evaluations: 3
+
+early_stopping_patience: 40
+convergence_threshold: 0.0001
+early_stopping_metric: "combined_score"
