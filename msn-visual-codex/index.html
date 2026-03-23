@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Networks</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <p class="eyebrow">Sorting Network</p>
+        <h1>Fixed-size comparator layouts</h1>
+
+        <section class="sidebar-block">
+          <p class="section-label">Size</p>
+          <div id="sizePicker" class="size-picker" aria-label="Network size"></div>
+        </section>
+
+        <section class="sidebar-block metric-card">
+          <p class="section-label">Comparator Count</p>
+          <strong id="comparatorCount">0</strong>
+        </section>
+
+        <section class="sidebar-block">
+          <p class="section-label">Controls</p>
+          <div class="transport">
+            <button id="backButton" class="transport-button" type="button" aria-label="Step backward">⏴</button>
+            <button id="playButton" class="transport-button primary" type="button" aria-label="Play or pause">▶</button>
+            <button id="forwardButton" class="transport-button" type="button" aria-label="Step forward">⏵</button>
+          </div>
+          <p id="progressText" class="progress-text">Level 0 / 0</p>
+        </section>
+      </aside>
+
+      <section class="stage-panel">
+        <div class="stage-head">
+          <div>
+            <p class="section-label">Active Network</p>
+            <h2 id="networkTitle">Large - 16 numbers</h2>
+          </div>
+        </div>
+
+        <div id="networkViewport" class="network-viewport">
+          <div id="networkCanvas" class="network-canvas">
+            <svg id="networkSvg" class="network-svg" aria-hidden="true"></svg>
+            <div id="tokenLayer" class="token-layer"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
